@@ -1,0 +1,699 @@
+label{
+    font-size: 15pt;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+}
+.BarrinhaBonita{
+    display: flex;
+    margin-top: -15px;
+    margin-left: -8px;
+    margin-right: -8px;
+    height: 175px;
+    width: 1510px;
+    background-color: #272121;
+}
+.TituloBarrinha{
+    padding-top: 10px;
+    padding-left: 135px;
+    margin-bottom: -10px;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-size: 23pt;
+    width: 440px;
+}
+.Autor{
+    margin-left: 275px;
+    margin-top: 85px;
+    font-size: 12pt;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+}
+.LogoPokemao{
+    margin-left: 750px;
+    margin-top: 5px;
+    width: 20px;
+    height: 20px;
+}
+.ImagemFim{
+    width: 50px;
+    height: 50px
+}
+.Loguinho{
+    margin-top: 10px;
+    margin-left: 75px;
+    height: 100px;
+    width: 260px;
+}
+.PaginaToda{
+    background-color: #E61515;
+}
+.BarrinhaDeBusca{
+    margin-left: 670px;
+}
+.busca{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 85px;
+}
+.BarrinhaDeBusca input{
+    margin-left: -15px;
+    width: 200px;
+    padding: 6px;
+    border: 2px solid black;
+    margin-top: 8px;
+    margin-right: 20px;
+    font-size: 17px;
+}
+.Submit{
+    padding: 6px;
+    margin-left: -18px;
+    margin-top: 8px;
+    height: 35px;
+    width: 33px;
+}
+.Pokemaos{
+    overflow-y: scroll;
+    margin-left: 150px;
+    margin-top: 10px;
+    height: 1230px;
+    width: 1120px;
+    background-color: #C6BCBC;
+}
+.dragon{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesdragon{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(75, 83, 148),
+        #8F9AF1 5px
+    );
+    /*background-color: #8F9AF1;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.ice{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesice{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(150, 190, 190),
+        #D1F3F3 5px
+    );
+    /*background-color: #D1F3F3;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.ghost{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesghost{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(129, 126, 153),
+        #BEB9EC 5px
+    );
+    /*background-color: #BEB9EC;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.rock{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesrock{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(240, 228, 180),
+        #D1CCB6 5px
+    );
+    /*background-color: #D1CCB6;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.psychic{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokespsychic{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(211, 104, 173),
+        #CE8FB8 5px
+    );
+    /*background-color: #CE8FB8;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.fighting{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesfighting{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(253, 178, 151),
+        #DA967D 5px
+    );
+    /*background-color: #DA967D;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.fairy{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesfairy{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(248, 197, 252),
+        #FBDFFD 5px
+    );
+    /*background-color: #FBDFFD;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.ground{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesground{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(161, 150, 103),
+        #D8C889 5px
+    );
+    /*background-color: #D8C889;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.poison{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokespoison{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(133, 84, 160),
+        #C8A3DC 5px
+    );
+    /*background-color: #C8A3DC;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.normal{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesnormal{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(145, 146, 132),
+        #DEDFD4 5px
+    );
+    /*background-color: #DEDFD4;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.bug{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesbug{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(175, 179, 107),
+        #D8DBAF 5px
+    );
+    /*background-color: #D8DBAF;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.electric{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokeselectric{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(197, 197, 54),
+        rgb(253, 245, 173) 5px
+    );
+    background-color: #ECE7B9;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.fire{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesfire{
+    margin-left: 260px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(243, 18, 18),
+        #E68B8B 5px
+    );
+    /*background-color: #E68B8B;*/
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.grass{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokesgrass{
+    margin-left: 260px;
+    border-radius: 10px;
+    background: repeating-linear-gradient(
+        to top,
+        green,
+        #AFDBB6 5px
+    );
+    /*background: linear-gradient(to top, gree,#AFDBB6 80%);*/
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.water{
+    margin-bottom: 15px;
+    position:relative;
+    margin-top: -200px;
+    margin-left: 150px;
+    width: 500px;
+    height: 150px;
+}
+.pokeswater{
+    margin-left: 260px;
+    border-radius: 10px;
+    background: repeating-linear-gradient(
+        to top,
+        rgb(99, 99, 206),
+        #AFC0DB 5px
+    );
+    /*background-color:  #AFC0DB;*/
+    border: 1px solid black;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    width: 500px;
+    height: 150px;
+}
+.NomeDoPoke{
+    text-shadow: 1px 1px 2px black;
+    margin-top: -25px;
+    font-size: 30pt;
+    margin-left: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.NumDoPoke{
+    margin-left: 30px;
+    margin-top: -150px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: #393933;
+}
+ul {
+    list-style-type: none;
+}
+.fundoPoke{
+    margin-left: 330px;
+    width: 150px;
+    height: 150px;
+    opacity:0.8;
+}
+.Tipos{
+    margin-left: 30px;
+    margin-top: -20px;
+}
+.ImagemDoTipo{
+    height: 10px;
+}
+.Tiposgrass{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color: rgb(45, 88, 45);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tipospoison{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(109, 104, 136);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposfire{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(119, 6, 6);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposflying{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(159, 165, 223);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposwater{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(37, 58, 245);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposbug{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(167, 162, 100);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposnormal{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(156, 155, 133);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposelectric{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(197, 180, 25);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposground{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(129, 123, 67);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposfairy{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(230, 169, 214);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposfighting{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(156, 115, 77);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tipospsychic{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(136, 8, 119);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposrock{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(182, 159, 95);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tipossteel{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(158, 169, 179);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposice{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(154, 185, 214);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposghost{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(134, 97, 177);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
+.Tiposdragon{
+    margin-left: 10px;
+    position: relative;
+    border-radius: 1px;
+    border: 1px solid black;
+    width: 100px;
+    height: 40px;
+    background-color:rgb(65, 107, 170);
+    margin-top: -20px;
+    text-shadow: 1px 1px 2px black; 
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    color: azure;
+}
