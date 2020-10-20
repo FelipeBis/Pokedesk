@@ -1,4 +1,9 @@
 //Função de quando a tela se inicia
+class Pokedex{
+    constructor() {
+        this.page = 0;
+      }
+}
 window.onload = function(){ 
 
     //var campo = document.getElementById('campo')
@@ -35,13 +40,18 @@ function funcPaginainicial(){
 //Função que lista todos os pokemons
 function funcTodosPoke(){
     const TodosPoke = []
+    var x =1
     for(var x = 1; x <= 151; x++){
         //var div = document.createElement('div')
         var urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+x
+        //var urlDoPokemao = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
+        //console.log(urlDoPokemao)
         
         TodosPoke.push(fetch(urlDoPokemao).then(response => response.json()))
+        
+        //console.log(TodosPoke)
     }
-
+    
     Promise.all(TodosPoke)
         .then(pokemons=>{
             
