@@ -7,83 +7,65 @@ class Pokedex{
         this.limit = 10
         this.baseURL = 'https://pokeapi.co/api/v2/pokemon/'
     }
-    loadPokemons(){
+    async loadPokemons(){
 
-        const data = (fetch(`${this.baseURL}?limit=${this.limit}&offset=${this.offset}`).then(response => response.json()))
+        const urlPokemons = `${this.baseURL}?limit=${this.limit}&offset=${this.offset}`;
+
+        const { data } = await axios.get(urlPokemons);
         
-        Promise.resolve(data)
-            .then(({results}) => {
-                const NomeDoPokemaos = results.map(({name}) => name)
-                //console.log(NomeDoPokemaos)
-                NomeDoPokemaos.forEach(funcCriarURL)
-                funcBuscareListarPoke(TodosPoke)
-                //console.log(TodosPoke)
-                //
-            })
+        const NomeDoPokemaos = data.results.map(({name}) => name)
+        
+        await funcListarPoke(NomeDoPokemaos);
 
         this.offset = this.offset + this.limit
     }
-    //
-    
 }
 
 //Criando a url para os pokemao
-function funcCriarURL(Pokes){
-    var urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+Pokes
-    //console.log(urlDoPokemao)
+async function funcGetPokemon(idOrName){
+    const urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+idOrName
 
-    TodosPoke.push(fetch(urlDoPokemao).then(response => response.json()))
-    //console.log(TodosPoke)
-    return TodosPoke
+    const { data } = await axios.get(urlDoPokemao);
+
+    return data;
 }
 
 //Para a listagem dos pokes
-function funcBuscareListarPoke(){
+async function funcListarPoke(pokemonNames){
+    const LugarDosPoke = document.querySelector('[id="TodoMundo"]')
 
+    pokemonNames.forEach(async(pokemonName) => {
 
-    var LugarDosPoke = document.querySelector('[id="TodoMundo"]')
+        const pokemon = await funcGetPokemon(pokemonName);
 
-    //console.log(TodosPoke)
-    Promise.all(TodosPoke)
-        .then(pokemons=>{
+        const types = pokemon.types.map(({type}) => type.name);
 
-        
-        const lisPokemons = pokemons.reduce((TodosOsPokemaos, pokemon) => {
-            const types = pokemon.types.map(InfoDoTipo => InfoDoTipo.type.name)
+        const listElement = document.createElement('li');
+        listElement.classList.add(`pokes${types[0]}`);
+        listElement.setAttribute('id', `poke${pokemon.id}`);
 
-            pokemon.name = ajustarNome(pokemon.name)
-            
-            const listElement = document.createElement('li');
+        listElement.innerHTML = `
+            <img class="fundoPoke" src="styles/images/bg.png"/>
+            <img class="imagem ${types[0]}" alt="${pokemon.name}" src="styles/svg/${pokemon.id}.svg"/>
+            <h3 class="NumDoPoke">#${pokemon.id}</h3>
+            <h2 class="NomeDoPoke">${pokemon.name}</h2>
+            <div class="Tipos">
+                <span class="Tipos${types[0]}">
+                    <img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
+                ${types.join(` </span> <span class="Tipos${types[1]}"> <img class="ImagemDoTipo" src="styles/types/${types[1]}.svg"/>`)}</span>
+            </div>
+        `;    
 
-            listElement.classList.add(`pokes${types[0]}`);
-            listElement.setAttribute('id', `poke${pokemon.id}`);
+        listElement.addEventListener('click', () => funcDetalhes(pokemon.id));
 
-            listElement.innerHTML = `
-                <img class="fundoPoke" src="styles/images/bg.png"/>
-                <img class="imagem ${types[0]}" alt="${pokemon.name}" src="styles/svg/${pokemon.id}.svg"/>
-                    <h3 class="NumDoPoke">#${pokemon.id}</h3>
-                    <h2 class="NomeDoPoke">${pokemon.name}</h2>
-                    <div class=Tipos>
-                        <span class="Tipos${types[0]}"><img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
-                        ${types.join(` </span> <span class="Tipos${types[1]}"> <img class="ImagemDoTipo" src="styles/types/${types[1]}.svg"/>`)}</span>
-                    </div>
-            `;    
-
-            listElement.addEventListener('click', () => funcDetalhes(pokemon.id));
-
-            LugarDosPoke.appendChild(listElement);
-                
-            return TodosOsPokemaos
-        }, '')
-
-
-    })
+        LugarDosPoke.appendChild(listElement);
+    });
 
 }
 
 //Pagina Inicial
 function funcPaginainicial(){
-    window.location = '/index.html';
+    window.location = '/';
 }
 
 //Se eu quiser ajustar as letras
@@ -92,14 +74,16 @@ function ajustarNome(NomeDoPokemao){
 }
 
 //Funcao que faz a busca dos pokemons
-function funcBuscarOsPoke(){
-    if(campo.value!=''){
-        var UlDosPokes = document.querySelector('ul#TodoMundo')
-        UlDosPokes.innerHTML=""
-        var ValorDigitado = document.querySelector('input#campo').value
-        TodosPoke = []
-        funcCriarURL(ValorDigitado)
-        funcBuscareListarPoke(TodosPoke)
+async function funcBuscarOsPoke(){
+    const campoBusca = document.getElementById('campo-busca');
+
+    const keyword = campoBusca.value.trim();
+
+    if(keyword !== ''){
+        const UlDosPokes = document.querySelector('ul#TodoMundo')
+        UlDosPokes.innerHTML="";
+
+        await funcListarPoke([keyword]);
     }
 }
 
@@ -261,6 +245,14 @@ window.onload = function(){
         }
     })
 }
+
+const formBusca = document.getElementById('formulario-busca');
+formBusca.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    funcBuscarOsPoke();
+
+})
 
 
 
