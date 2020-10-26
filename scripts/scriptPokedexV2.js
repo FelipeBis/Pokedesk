@@ -152,7 +152,7 @@ function buscarInfoSobre(Poke){
     axios.get(urlSobrePoke)
     .then(function(response){
             informacoesGerais = response.data.flavor_text_entries[6].flavor_text
-            console.log(response.data.flavor_text_entries[6].flavor_text)
+            //console.log(response.data.flavor_text_entries[6].flavor_text)
             //console.log(informacoesGerais)
         return informacoesGerais
     })
@@ -201,7 +201,7 @@ function funcDetalhes(Poke){
                 pokemon.name = ajustarNome(pokemon.name)
     
                 TodosOsPokemaos += `
-                    <li id="poke${pokemon.id}" class="pokes${types[0]}Detalhes">
+                    <li id="poke${pokemon.id}" class="pokes${types[0]} Detalhes">
                     <img class="fundoPoke" src="styles/images/bg.png"/>
                     <img class="imagem ${types[0]}" alt="${pokemon.name}" src="styles/svg/${pokemon.id}.svg"/>
                         <h3 class="NumDoPoke">#${pokemon.id}</h3>
