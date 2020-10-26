@@ -1,5 +1,4 @@
 var TodosPoke = []
-var informacoesGerais
 
 
 class Pokedex{
@@ -40,17 +39,26 @@ function funcCriarURL(Pokes){
 
 //Para a listagem dos pokes
 function funcBuscareListarPoke(){
+
+
+    var LugarDosPoke = document.querySelector('[id="TodoMundo"]')
+
     //console.log(TodosPoke)
     Promise.all(TodosPoke)
         .then(pokemons=>{
-            
+
+        
         const lisPokemons = pokemons.reduce((TodosOsPokemaos, pokemon) => {
             const types = pokemon.types.map(InfoDoTipo => InfoDoTipo.type.name)
 
             pokemon.name = ajustarNome(pokemon.name)
+            
+            const listElement = document.createElement('li');
 
-            TodosOsPokemaos += `
-                <li onclick="funcDetalhes(${pokemon.id})" id="poke${pokemon.id}" class="pokes${types[0]}">
+            listElement.classList.add(`pokes${types[0]}`);
+            listElement.setAttribute('id', `poke${pokemon.id}`);
+
+            listElement.innerHTML = `
                 <img class="fundoPoke" src="styles/images/bg.png"/>
                 <img class="imagem ${types[0]}" alt="${pokemon.name}" src="styles/svg/${pokemon.id}.svg"/>
                     <h3 class="NumDoPoke">#${pokemon.id}</h3>
@@ -59,14 +67,15 @@ function funcBuscareListarPoke(){
                         <span class="Tipos${types[0]}"><img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
                         ${types.join(` </span> <span class="Tipos${types[1]}"> <img class="ImagemDoTipo" src="styles/types/${types[1]}.svg"/>`)}</span>
                     </div>
-                </li>`
+            `;    
+
+            listElement.addEventListener('click', () => funcDetalhes(pokemon.id));
+
+            LugarDosPoke.appendChild(listElement);
                 
             return TodosOsPokemaos
         }, '')
 
-        var LugarDosPoke = document.querySelector('[id="TodoMundo"]')
-        
-        LugarDosPoke.innerHTML = lisPokemons
 
     })
 
@@ -137,29 +146,23 @@ function funcMostrarSobre(){
 }
 
 //Buscar informacoes gerais
-function buscarInfoEvolucao(Poke){
-    var urlEvolucao = 'https://pokeapi.co/api/v2/evolution-chain/'+Poke
+async function buscarInfoEvolucao(idOrName){
+    const urlEvolucao = 'https://pokeapi.co/api/v2/evolution-chain/'+idOrName
     
-    axios.get(urlEvolucao)
-    .then(function(response){
-        //console.log(response)
-    })
+    const { data } = await axios.get(urlEvolucao);
+   
+    return;
 }
 
 //Buscar informacoes sobre evolucao
-function buscarInfoSobre(Poke){
-    var urlSobrePoke = 'https://pokeapi.co/api/v2/pokemon-species/'+Poke
-    axios.get(urlSobrePoke)
-    .then(function(response){
-            informacoesGerais = response.data.flavor_text_entries[6].flavor_text
-            //console.log(response.data.flavor_text_entries[6].flavor_text)
-            //console.log(informacoesGerais)
-        return informacoesGerais
-    })
+async function buscarInfoSobre(idOrName){
+    const urlSobrePoke = 'https://pokeapi.co/api/v2/pokemon-species/'+idOrName
+    const { data } = await axios.get(urlSobrePoke)
+    return data.flavor_text_entries[6].flavor_text;
 }
 
 //Funcao do detalhes dos pokemons
-function funcDetalhes(Poke){
+async function funcDetalhes(Poke){
     document.write('<!DOCTYPE html>')
     document.write('<html>')
     document.write('<html lang="en">')
@@ -186,69 +189,62 @@ function funcDetalhes(Poke){
 
     document.write('<ul id="TodoMundo" class="Todos">')
     var urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+Poke
-    buscarInfoEvolucao(Poke)
-    buscarInfoSobre(Poke)
+    const informacoesEvolucao = await buscarInfoEvolucao(Poke)
+    const informacoesGerais = await buscarInfoSobre(Poke)
     
-    TodosPoke = []
+    const {data: pokemon} = await axios.get(urlDoPokemao);
 
-    TodosPoke.push(fetch(urlDoPokemao).then(response => response.json()))
+    const types = pokemon.types.map(({type}) => type.name);
 
-    Promise.all(TodosPoke)
-        .then(pokemons=>{
-            const lisPokemons = pokemons.reduce((TodosOsPokemaos, pokemon) => {
-                const types = pokemon.types.map(InfoDoTipo => InfoDoTipo.type.name)
+    const { id, name } = pokemon;
+
+    const pokemonNomeFormatado = ajustarNome(name);
     
-                pokemon.name = ajustarNome(pokemon.name)
-    
-                TodosOsPokemaos += `
-                    <li id="poke${pokemon.id}" class="pokes${types[0]} Detalhes">
-                    <img class="fundoPoke" src="styles/images/bg.png"/>
-                    <img class="imagem ${types[0]}" alt="${pokemon.name}" src="styles/svg/${pokemon.id}.svg"/>
-                        <h3 class="NumDoPoke">#${pokemon.id}</h3>
-                        <h2 class="NomeDoPoke">${pokemon.name}</h2>
-                        
-                        <div class=Tipos>
-                            <span class="Tipos${types[0]}"><img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
-                            ${types.join(` </span> <span class="Tipos${types[1]}"> <img class="ImagemDoTipo" src="styles/types/${types[1]}.svg"/>`)}</span>
-                        </div>
+    document.write(`
+        <li id="poke${id}" class="pokes${types[0]} Detalhes">
+        <img class="fundoPoke" src="styles/images/bg.png"/>
+        <img class="imagem ${types[0]}" alt="${pokemonNomeFormatado}" src="styles/svg/${id}.svg"/>
+            <h3 class="NumDoPoke">#${id}</h3>
+            <h2 class="NomeDoPoke">${pokemonNomeFormatado}</h2>
+            
+            <div class=Tipos>
+                <span class="Tipos${types[0]}"><img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
+                ${types.join(` </span> <span class="Tipos${types[1]}"> <img class="ImagemDoTipo" src="styles/types/${types[1]}.svg"/>`)}</span>
+            </div>
 
-                        <div id="botoesDetalhes">
-                            <button id="sobre" onclick="funcMostrarSobre()">About</button>
-                            <button id="status" onclick="funcMostrarStatus()">Stats</button>
-                            <button id="evolucao" onclick="funcMostrarEvolucao()">Evolution</button>
-                        </div>
+            <div id="botoesDetalhes">
+                <button id="sobre" onclick="funcMostrarSobre()">About</button>
+                <button id="status" onclick="funcMostrarStatus()">Stats</button>
+                <button id="evolucao" onclick="funcMostrarEvolucao()">Evolution</button>
+            </div>
 
-                    </li>
+        </li>
 
-                    <div id="Tudosobre">
-                        <p>${informacoesGerais}</p>
+        <div id="Tudosobre">
+            <p>${informacoesGerais}</p>
 
-                        <p id="PokedexData">Pokédex Data</p>
-                        <p><span style="font-weight: bold;">Species </span>HUASHUASHUHUAS</p>
-                        <p><span style="font-weight: bold;">Height </span>HUASHUASHUHUAS</p>
-                        <p><span style="font-weight: bold;">Weight </span>HUASHUASHUHUAS</p>
-                        <p><span style="font-weight: bold;">Abillities </span>HUASHUASHUHUAS</p>
-                        <p><span style="font-weight: bold;">Weaknesss </span>HUASHUASHUHUAS</p>
-                    </div>
-                    <div id="TudosobreStatus">
-                        <p>TUDO STATUS</p>
-                    </div>
-                    <div id="TudosobreEvolution">
-                        <p>TUDO EVOLUTION</p>
-                    </div>
-                    `
-                    
-                return TodosOsPokemaos
-            }, '')
-            document.write(lisPokemons)
-            document.write('</ul>')
-            document.write('</div>')
-            document.write('<div class="LogoPokemao">')
-            document.write('<img class="ImagemFim" src="styles/images/pokedex-logo.png">')
-            document.write('</div>')
-            document.write('</body>')
-            document.write('</html>')
-        })
+            <p id="PokedexData">Pokédex Data</p>
+            <p><span style="font-weight: bold;">Species </span>HUASHUASHUHUAS</p>
+            <p><span style="font-weight: bold;">Height </span>HUASHUASHUHUAS</p>
+            <p><span style="font-weight: bold;">Weight </span>HUASHUASHUHUAS</p>
+            <p><span style="font-weight: bold;">Abillities </span>HUASHUASHUHUAS</p>
+            <p><span style="font-weight: bold;">Weaknesss </span>HUASHUASHUHUAS</p>
+        </div>
+        <div id="TudosobreStatus">
+            <p>TUDO STATUS</p>
+        </div>
+        <div id="TudosobreEvolution">
+            <p>TUDO EVOLUTION</p>
+        </div>
+        `);
+                  
+    document.write('</ul>')
+    document.write('</div>')
+    document.write('<div class="LogoPokemao">')
+    document.write('<img class="ImagemFim" src="styles/images/pokedex-logo.png">')
+    document.write('</div>')
+    document.write('</body>')
+    document.write('</html>')
 }
 
 //Função de quando a tela se inicia - minha MAIN
