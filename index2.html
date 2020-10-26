@@ -3,9 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen and (min-width: 1920px)" href="styles/stylePokedex.css">
+    <link rel="stylesheet" media="screen and (max-width: 1919px)" href="styles/stylePokedex-600.css">
+    <link rel="icon" type="image/png" href="styles/images/poke-icon.png">
+    <title>Detalhes do pokemon</title>
 </head>
-<body>
-    
+<body class="PaginaToda">
+        
+    <div class="BarrinhaBonita">
+        <h3 class="TituloBarrinha">A melhor pokédex do Brasil!</h3>
+        <img class="Loguinho" onclick="funcPaginainicial()"src="styles/images/1200px-International_Pokémon_logo.svg.png">
+        <h5 class="Autor">by: Felipe Bis</h5>
+    </div>
+
+        <div class="BarrinhaDeBusca">
+            <label>Digite o número de um pokémon para buscá-lo.</label>
+            <form id="formulario">
+                <input id="campo" class="busca" type="search" placeholder="Exemplo: 1"/>
+                <button id="buscar" style="border-radius: 7px;" onclick="funcBuscarOsPoke()" class="Submit" type="button"><i class="fa fa-search"></i></button>
+                <!--<input id="enviar" class="Submit" type="submit" value="Buscar"/>-->
+            </form>
+        </div>
+
+        <div class="Pokemaos">
+            <ul id="TodoMundo" class="Todos">
+
+            </ul>
+        </div>
+
+        <div class="LogoPokemao">
+            <img class="ImagemFim" src="styles/images/pokedex-logo.png">
+        </div>
+
 </body>
+
 </html>
