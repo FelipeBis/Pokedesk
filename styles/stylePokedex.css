@@ -695,18 +695,7 @@ ul {
     font-style: normal;
     color: azure;
 }
-.pokesgrassDetalhes{
-    margin-left: 260px;
-    border-radius: 10px;
-    background: repeating-linear-gradient(
-        to top,
-        green,
-        #AFDBB6 5px
-    );
-    /*background: linear-gradient(to top, gree,#AFDBB6 80%);*/
-    border: 1px solid black;
-    margin-bottom: 5px;
-    margin-top: 5px;
+.Detalhes{
     width: 500px;
     height: 250px;
 }
@@ -779,6 +768,7 @@ p{
     font-size: 15px;
     padding: 6px;
     padding-left: 10px;
+    overflow: visible;
 }
 #PokedexData{
     color: #08bb23; 

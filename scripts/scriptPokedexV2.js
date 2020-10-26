@@ -185,7 +185,7 @@ async function funcDetalhes(Poke){
     const pokemonNomeFormatado = ajustarNome(name);
     
     document.write(`
-        <li id="poke${id}" class="pokes${types[0]}Detalhes">
+        <li id="poke${id}" class="pokes${types[0]} Detalhes">
         <img class="fundoPoke" src="styles/images/bg.png"/>
         <img class="imagem ${types[0]}" alt="${pokemonNomeFormatado}" src="styles/svg/${id}.svg"/>
             <h3 class="NumDoPoke">#${id}</h3>
