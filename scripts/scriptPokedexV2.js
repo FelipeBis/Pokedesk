@@ -1,12 +1,12 @@
-var TodosPoke = []
-
-
 class Pokedex{
     constructor() {
+        this.TodosPoke = []
         this.offset = 0
         this.limit = 10
         this.baseURL = 'https://pokeapi.co/api/v2/pokemon/'
     }
+
+    //Carregar os pokemons
     async loadPokemons(){
 
         const urlPokemons = `${this.baseURL}?limit=${this.limit}&offset=${this.offset}`;
@@ -15,52 +15,60 @@ class Pokedex{
         
         const NomeDoPokemaos = data.results.map(({name}) => name)
         
-        await funcListarPoke(NomeDoPokemaos);
+        await this.funcListarPoke(NomeDoPokemaos);
 
         this.offset = this.offset + this.limit
     }
+
+    //Para a listagem dos pokes
+    async funcListarPoke(pokemonNames){
+        const LugarDosPoke = document.querySelector('[id="TodoMundo"]')
+    
+        pokemonNames.forEach(async(pokemonName) => {
+    
+            const pokemon = await this.funcGetPokemon(pokemonName);
+    
+            const types = pokemon.types.map(({type}) => type.name);
+    
+            const listElement = document.createElement('li');
+            listElement.classList.add(`pokes${types[0]}`);
+            listElement.setAttribute('id', `poke${pokemon.id}`);
+    
+            listElement.innerHTML = `
+                <img class="fundoPoke" src="styles/images/bg.png"/>
+                <img class="imagem ${types[0]}" alt="${pokemon.name}" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${pokemon.id}.svg"/>
+                <h3 class="NumDoPoke">#${pokemon.id}</h3>
+                <h2 class="NomeDoPoke">${pokemon.name}</h2>
+                <div class="Tipos">
+                    <span class="Tipos${types[0]}">
+                        <img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
+                    ${types.join(` </span> <span class="Tipos${types[1]}"> <img class="ImagemDoTipo" src="styles/types/${types[1]}.svg"/>`)}</span>
+                </div>
+            `;    
+    
+            listElement.addEventListener('click', () => funcDetalhes(pokemon.id));
+    
+            LugarDosPoke.appendChild(listElement);
+        });
+    
+    }
+
+    //Criando a url para os pokemao
+    async  funcGetPokemon(idOrName){
+        const urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+idOrName
+        const { data } = await axios.get(urlDoPokemao);
+        return data;
+    }
+
 }
 
-//Criando a url para os pokemao
-async function funcGetPokemon(idOrName){
+//Criando URL para a proxima evolucao
+async function funcGetPokemonEvolution(idOrName){
+    
     const urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+idOrName
-
     const { data } = await axios.get(urlDoPokemao);
-
-    return data;
-}
-
-//Para a listagem dos pokes
-async function funcListarPoke(pokemonNames){
-    const LugarDosPoke = document.querySelector('[id="TodoMundo"]')
-
-    pokemonNames.forEach(async(pokemonName) => {
-
-        const pokemon = await funcGetPokemon(pokemonName);
-
-        const types = pokemon.types.map(({type}) => type.name);
-
-        const listElement = document.createElement('li');
-        listElement.classList.add(`pokes${types[0]}`);
-        listElement.setAttribute('id', `poke${pokemon.id}`);
-
-        listElement.innerHTML = `
-            <img class="fundoPoke" src="styles/images/bg.png"/>
-            <img class="imagem ${types[0]}" alt="${pokemon.name}" src="styles/svg/${pokemon.id}.svg"/>
-            <h3 class="NumDoPoke">#${pokemon.id}</h3>
-            <h2 class="NomeDoPoke">${pokemon.name}</h2>
-            <div class="Tipos">
-                <span class="Tipos${types[0]}">
-                    <img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
-                ${types.join(` </span> <span class="Tipos${types[1]}"> <img class="ImagemDoTipo" src="styles/types/${types[1]}.svg"/>`)}</span>
-            </div>
-        `;    
-
-        listElement.addEventListener('click', () => funcDetalhes(pokemon.id));
-
-        LugarDosPoke.appendChild(listElement);
-    });
-
+    return data.id;
+    
 }
 
 //Pagina Inicial
@@ -76,14 +84,14 @@ function ajustarNome(NomeDoPokemao){
 //Funcao que faz a busca dos pokemons
 async function funcBuscarOsPoke(){
     const campoBusca = document.getElementById('campo-busca');
-
+    const pokedex = new Pokedex()
     const keyword = campoBusca.value.trim();
 
     if(keyword !== ''){
         const UlDosPokes = document.querySelector('ul#TodoMundo')
         UlDosPokes.innerHTML="";
 
-        await funcListarPoke([keyword]);
+        await pokedex.funcListarPoke([keyword]);
     }
 }
 
@@ -130,19 +138,52 @@ function funcMostrarSobre(){
 }
 
 //Buscar informacoes gerais
-async function buscarInfoEvolucao(idOrName){
-    const urlEvolucao = 'https://pokeapi.co/api/v2/evolution-chain/'+idOrName
-    
+async function buscarInfoEvolucao(urlEvolucao, Poke){
+    var Evolution = []
+    //const urlEvolucao = 'https://pokeapi.co/api/v2/evolution-chain/'+idOrName
+    //console.log(urlEvolucao)
     const { data } = await axios.get(urlEvolucao);
-   
-    return;
+    if(data.chain.evolves_to != "")
+        Evolution.push(data.chain.evolves_to[0].species.name)
+    else
+        Evolution.push(data.chain.species.name)
+    return Evolution
 }
+
+//GET URL da evolucao
+async function GetUrlEvolution(idOrName){
+    const urlSobrePoke = 'https://pokeapi.co/api/v2/pokemon-species/'+idOrName
+    const { data } = await axios.get(urlSobrePoke)
+    return data.evolution_chain.url
+}
+
 
 //Buscar informacoes sobre evolucao
 async function buscarInfoSobre(idOrName){
     const urlSobrePoke = 'https://pokeapi.co/api/v2/pokemon-species/'+idOrName
     const { data } = await axios.get(urlSobrePoke)
     return data.flavor_text_entries[6].flavor_text;
+}
+
+//Buscar Genero Pokemon
+async function buscarInfoGenero(idOrName){
+    const urlSobrePoke = 'https://pokeapi.co/api/v2/pokemon-species/'+idOrName
+    const { data } = await axios.get(urlSobrePoke)
+    return data.genera[7].genus
+}
+
+//Buscar Pelo tipo de fraqueza
+async function buscarFraqueza(NameType){
+    const urlSobrePoke = 'https://pokeapi.co/api/v2/type/'+NameType
+    const { data } = await axios.get(urlSobrePoke)
+    return data.damage_relations.double_damage_from
+}
+
+//Buscar pelos status do pókemon
+async function buscarStatus(idOrName){
+    const urlSobrePoke = 'https://pokeapi.co/api/v2/pokemon/'+idOrName
+    const { data } = await axios.get(urlSobrePoke)
+    return data.stats
 }
 
 //Funcao do detalhes dos pokemons
@@ -152,8 +193,8 @@ async function funcDetalhes(Poke){
     document.write('<html lang="en">')
 
     document.write('<head>')
-    document.write('<link rel="stylesheet" media="screen and (min-width: 1920px)" href="styles/stylePokedex.css">')
-    document.write('<link rel="stylesheet" media="screen and (max-width: 1919px)" href="styles/stylePokedex-600.css">')
+    document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">')
+    document.write('<link rel="stylesheet" href="styles/stylePokedex.css">')
     document.write('</head>')
 
     document.write('<body class="PaginaToda">')
@@ -173,21 +214,37 @@ async function funcDetalhes(Poke){
 
     document.write('<ul id="TodoMundo" class="Todos">')
     var urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+Poke
-    const informacoesEvolucao = await buscarInfoEvolucao(Poke)
-    const informacoesGerais = await buscarInfoSobre(Poke)
     
+
+    const URLdaEvolution = await GetUrlEvolution(Poke)
+    const informacoesEvolucao = await buscarInfoEvolucao(URLdaEvolution, Poke)
+    const proximaEvolucao = await funcGetPokemonEvolution(informacoesEvolucao)
+    const informacoesGerais = await buscarInfoSobre(Poke)
+    const informacoesGenero = await buscarInfoGenero(Poke)
+    const informacoesStatus = await buscarStatus(Poke)
+
     const {data: pokemon} = await axios.get(urlDoPokemao);
 
+    const informacoesAltura = pokemon.height
+
+    const informacoesPeso = pokemon.weight
+
     const types = pokemon.types.map(({type}) => type.name);
+
+    const habilidades = pokemon.abilities.map(({ability}) => ability.name)
 
     const { id, name } = pokemon;
 
     const pokemonNomeFormatado = ajustarNome(name);
+
+    const informacoesFraqueza = await buscarFraqueza(types[0])
+    
+    const Fraquezas = informacoesFraqueza.map(({name}) => name)
     
     document.write(`
-        <li id="poke${id}" class="pokes${types[0]}Detalhes">
+        <li id="poke${id}" class="pokes${types[0]} Detalhes">
         <img class="fundoPoke" src="styles/images/bg.png"/>
-        <img class="imagem ${types[0]}" alt="${pokemonNomeFormatado}" src="styles/svg/${id}.svg"/>
+        <img class="imagem ${types[0]}" alt="${pokemonNomeFormatado}" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${id}.svg"/>
             <h3 class="NumDoPoke">#${id}</h3>
             <h2 class="NomeDoPoke">${pokemonNomeFormatado}</h2>
             
@@ -208,17 +265,27 @@ async function funcDetalhes(Poke){
             <p>${informacoesGerais}</p>
 
             <p id="PokedexData">Pokédex Data</p>
-            <p><span style="font-weight: bold;">Species </span>HUASHUASHUHUAS</p>
-            <p><span style="font-weight: bold;">Height </span>HUASHUASHUHUAS</p>
-            <p><span style="font-weight: bold;">Weight </span>HUASHUASHUHUAS</p>
-            <p><span style="font-weight: bold;">Abillities </span>HUASHUASHUHUAS</p>
-            <p><span style="font-weight: bold;">Weaknesss </span>HUASHUASHUHUAS</p>
+            <p><span style="font-weight: bold;">Species: </span>${informacoesGenero}</p>
+            <p><span style="font-weight: bold;">Height: </span>${(informacoesAltura/10)}m</p>
+            <p><span style="font-weight: bold;">Weight: </span>${(informacoesPeso/10)}kg</p>
+            <p><span style="font-weight: bold;">Abillities: </span>1. ${habilidades.join(`, 2. `)}</p>
+            <p><span style="font-weight: bold;">Weaknesss </span>${Fraquezas.join(`, `)}</p>
         </div>
         <div id="TudosobreStatus">
-            <p>TUDO STATUS</p>
+            <span style="font-weight: bold;">HP: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[0].base_stat}px;background-color:green">${informacoesStatus[0].base_stat}</div>
+            <span style="font-weight: bold;">ATTACK: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[1].base_stat}px;background-color:green">${informacoesStatus[1].base_stat}</div>
+            <span style="font-weight: bold;">DEFENSE: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[2].base_stat}px;background-color:green">${informacoesStatus[2].base_stat}</div>
+            <span style="font-weight: bold;">SPECIAL-ATTACK: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[3].base_stat}px;background-color:green">${informacoesStatus[3].base_stat}</div>
+            <span style="font-weight: bold;">SPECIAL-DEFENSE: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[4].base_stat}px;background-color:green">${informacoesStatus[4].base_stat}</div>
+            <span style="font-weight: bold;">SPEED: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[5].base_stat}px;background-color:green">${informacoesStatus[5].base_stat}</div>
         </div>
         <div id="TudosobreEvolution">
-            <p>TUDO EVOLUTION</p>
+            <p>${pokemonNomeFormatado} evolves to: ${informacoesEvolucao}</p>
+            <div>
+                <img id="pokemonInicial" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${id}.svg"/>
+                <img id="setaEvolution" src="https://images.vexels.com/media/users/3/136724/isolated/preview/860e19a9f09f5828a8991d0b6e6127e7-seta-direita-2-by-vexels.png"/>
+                <img id="pokemonEvoluido" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${proximaEvolucao}.svg"/>
+            </div>
         </div>
         `);
                   
@@ -230,6 +297,15 @@ async function funcDetalhes(Poke){
     document.write('</body>')
     document.write('</html>')
 }
+
+//Adicionando evento de busca no formulario (input)
+const formBusca = document.getElementById('formulario-busca');
+formBusca.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    funcBuscarOsPoke();
+
+})
 
 //Função de quando a tela se inicia - minha MAIN
 window.onload = function(){
@@ -246,13 +322,7 @@ window.onload = function(){
     })
 }
 
-const formBusca = document.getElementById('formulario-busca');
-formBusca.addEventListener('submit', (event) => {
-    event.preventDefault();
 
-    funcBuscarOsPoke();
-
-})
 
 
 
