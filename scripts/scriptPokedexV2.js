@@ -4,15 +4,20 @@ class Pokedex{
         this.offset = 0
         this.limit = 10
         this.baseURL = 'https://pokeapi.co/api/v2/pokemon/'
+        this.DivLoading = document.querySelector("#load")
     }
 
     //Carregar os pokemons
     async loadPokemons(){
-
+        
         const urlPokemons = `${this.baseURL}?limit=${this.limit}&offset=${this.offset}`;
 
+        this.DivLoading.classList.remove('invisivel')
+
         const { data } = await axios.get(urlPokemons);
-        
+
+        this.DivLoading.classList.add('invisivel')
+
         const NomeDoPokemaos = data.results.map(({name}) => name)
         
         await this.funcListarPoke(NomeDoPokemaos);
@@ -25,20 +30,30 @@ class Pokedex{
         const LugarDosPoke = document.querySelector('[id="TodoMundo"]')
     
         pokemonNames.forEach(async(pokemonName) => {
+
+            const pokemonNomeFormatado = ajustarNome(pokemonName);
     
             const pokemon = await this.funcGetPokemon(pokemonName);
     
             const types = pokemon.types.map(({type}) => type.name);
-    
+
+            //const types1 = ajustarType(types[0])
+            //const types2 = ajustarType(types[1])
+            types.forEach(function AjustarType(type){
+                //console.log(type.charAt(0).toUpperCase() + type.slice(1))
+                return type.charAt(0).toUpperCase() + type.slice(1);
+            })
+
+            //console.log(types[0].charAt(0).toUpperCase() + types[0].slice(1))
             const listElement = document.createElement('li');
             listElement.classList.add(`pokes${types[0]}`);
             listElement.setAttribute('id', `poke${pokemon.id}`);
     
             listElement.innerHTML = `
                 <img class="fundoPoke" src="styles/images/bg.png"/>
-                <img class="imagem ${types[0]}" alt="${pokemon.name}" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${pokemon.id}.svg"/>
+                <img class="imagem ${types[0]}" alt="${pokemonNomeFormatado}" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${pokemon.id}.svg"/>
                 <h3 class="NumDoPoke">#${pokemon.id}</h3>
-                <h2 class="NomeDoPoke">${pokemon.name}</h2>
+                <h2 class="NomeDoPoke">${pokemonNomeFormatado}</h2>
                 <div class="Tipos">
                     <span class="Tipos${types[0]}">
                         <img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
@@ -56,7 +71,13 @@ class Pokedex{
     //Criando a url para os pokemao
     async  funcGetPokemon(idOrName){
         const urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+idOrName
+        
+        this.DivLoading.classList.remove('invisivel')
+
         const { data } = await axios.get(urlDoPokemao);
+
+        this.DivLoading.classList.add('invisivel')
+
         return data;
     }
 
@@ -89,6 +110,7 @@ async function funcBuscarOsPoke(){
 
     if(keyword !== ''){
         const UlDosPokes = document.querySelector('ul#TodoMundo')
+        
         UlDosPokes.innerHTML="";
 
         await pokedex.funcListarPoke([keyword]);
@@ -104,22 +126,7 @@ function funcMostrarStatus(){
     }
     else{
         document.getElementById('TudosobreStatus').style.display = "block"
-        document.getElementById('TudosobreEvolution').style.display = "none"
         document.getElementById('Tudosobre').style.display = "none"
-    }
-}
-
-//Func mostrar evolution
-function funcMostrarEvolucao(){
-    var divTudoEvolucao  = document.getElementById('TudosobreEvolution').style.display
-
-    if(divTudoEvolucao == "block"){
-        document.getElementById('TudosobreEvolution').style.display = "none"
-    }
-    else{
-        document.getElementById('TudosobreEvolution').style.display = "block"
-        document.getElementById('Tudosobre').style.display = "none"
-        document.getElementById('TudosobreStatus').style.display = "none"
     }
 }
 
@@ -133,7 +140,6 @@ function funcMostrarSobre(){
     else{
         document.getElementById('Tudosobre').style.display = "block"
         document.getElementById('TudosobreStatus').style.display = "none"
-        document.getElementById('TudosobreEvolution').style.display = "none"
     }
 }
 
@@ -157,6 +163,11 @@ async function GetUrlEvolution(idOrName){
     return data.evolution_chain.url
 }
 
+//Descrição ajustavel
+function ajustarDesc(desc) {
+    let content = desc.toString().replace(/\f/g, ' ').split('\f');
+    return content;
+}
 
 //Buscar informacoes sobre evolucao
 async function buscarInfoSobre(idOrName){
@@ -215,10 +226,6 @@ async function funcDetalhes(Poke){
     document.write('<ul id="TodoMundo" class="Todos">')
     var urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+Poke
     
-
-    const URLdaEvolution = await GetUrlEvolution(Poke)
-    const informacoesEvolucao = await buscarInfoEvolucao(URLdaEvolution, Poke)
-    const proximaEvolucao = await funcGetPokemonEvolution(informacoesEvolucao)
     const informacoesGerais = await buscarInfoSobre(Poke)
     const informacoesGenero = await buscarInfoGenero(Poke)
     const informacoesStatus = await buscarStatus(Poke)
@@ -256,13 +263,12 @@ async function funcDetalhes(Poke){
             <div id="botoesDetalhes">
                 <button id="sobre" onclick="funcMostrarSobre()">About</button>
                 <button id="status" onclick="funcMostrarStatus()">Stats</button>
-                <button id="evolucao" onclick="funcMostrarEvolucao()">Evolution</button>
             </div>
 
         </li>
 
         <div id="Tudosobre">
-            <p>${informacoesGerais}</p>
+            <p>${ajustarDesc(informacoesGerais)}</p>
 
             <p id="PokedexData">Pokédex Data</p>
             <p><span style="font-weight: bold;">Species: </span>${informacoesGenero}</p>
@@ -278,14 +284,6 @@ async function funcDetalhes(Poke){
             <span style="font-weight: bold;">SPECIAL-ATTACK: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[3].base_stat}px;background-color:green">${informacoesStatus[3].base_stat}</div>
             <span style="font-weight: bold;">SPECIAL-DEFENSE: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[4].base_stat}px;background-color:green">${informacoesStatus[4].base_stat}</div>
             <span style="font-weight: bold;">SPEED: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[5].base_stat}px;background-color:green">${informacoesStatus[5].base_stat}</div>
-        </div>
-        <div id="TudosobreEvolution">
-            <p>${pokemonNomeFormatado} evolves to: ${informacoesEvolucao}</p>
-            <div>
-                <img id="pokemonInicial" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${id}.svg"/>
-                <img id="setaEvolution" src="https://images.vexels.com/media/users/3/136724/isolated/preview/860e19a9f09f5828a8991d0b6e6127e7-seta-direita-2-by-vexels.png"/>
-                <img id="pokemonEvoluido" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${proximaEvolucao}.svg"/>
-            </div>
         </div>
         `);
                   
