@@ -213,9 +213,9 @@ async function funcDetalhes(Poke){
     document.write('<img class="Loguinho" onclick="funcPaginainicial()"src="styles/images/1200px-International_Pokémon_logo.svg.png">')
     document.write('</header>')
 
-    document.write('<div class="BarrinhaDeBusca">')
+    document.write('<div class="BarrinhaDeBuscaDoDetalhes">')
     document.write('<button id="voltar" style="border-radius: 7px;" onclick="funcPaginainicial()" class="back" type="button">Voltar</button>')
-    document.write('<label> Detalhes do pokemon: </label>')
+    document.write('<p class="TextoDetalhes"> Detalhes do pokemon: </p>')
     document.write('</div>')
 
     document.write('<div class="Pokemaos">')
