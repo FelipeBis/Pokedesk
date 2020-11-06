@@ -5,14 +5,13 @@ class Pokedex{
         this.limit = 10
         this.baseURL = 'https://pokeapi.co/api/v2/pokemon/'
         this.DivLoading = document.querySelector("#load")
+        this.DivError = document.querySelector("#error")
     }
 
     //Carregar os pokemons
     async loadPokemons(){
         
         const urlPokemons = `${this.baseURL}?limit=${this.limit}&offset=${this.offset}`;
-
-        this.DivLoading.classList.remove('invisivel')
 
         const { data } = await axios.get(urlPokemons);
 
@@ -21,46 +20,52 @@ class Pokedex{
         const NomeDoPokemaos = data.results.map(({name}) => name)
         
         await this.funcListarPoke(NomeDoPokemaos);
+        
 
         this.offset = this.offset + this.limit
     }
 
     //Para a listagem dos pokes
     async funcListarPoke(pokemonNames){
+        
         const LugarDosPoke = document.querySelector('[id="TodoMundo"]')
-    
+       
         pokemonNames.forEach(async(pokemonName) => {
+        
+            const pokemon = await this.funcGetPokemon(pokemonName)
 
-            const pokemonNomeFormatado = ajustarNome(pokemonName);
-    
-            const pokemon = await this.funcGetPokemon(pokemonName);
-    
             const types = pokemon.types.map(({type}) => type.name);
 
             //const types1 = ajustarType(types[0])
             //const types2 = ajustarType(types[1])
-            types.forEach(function AjustarType(type){
-                //console.log(type.charAt(0).toUpperCase() + type.slice(1))
-                return type.charAt(0).toUpperCase() + type.slice(1);
-            })
+            
 
             //console.log(types[0].charAt(0).toUpperCase() + types[0].slice(1))
             const listElement = document.createElement('li');
-            listElement.classList.add(`pokes${types[0]}`);
+            listElement.classList.add(`card`);
+            listElement.classList.add(`${types[0]}1`)
             listElement.setAttribute('id', `poke${pokemon.id}`);
     
             listElement.innerHTML = `
-                <img class="fundoPoke" src="styles/images/bg.png"/>
-                <img class="imagem ${types[0]}" alt="${pokemonNomeFormatado}" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${pokemon.id}.svg"/>
-                <h3 class="NumDoPoke">#${pokemon.id}</h3>
-                <h2 class="NomeDoPoke">${pokemonNomeFormatado}</h2>
-                <div class="Tipos">
-                    <span class="Tipos${types[0]}">
-                        <img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
-                    ${types.join(` </span> <span class="Tipos${types[1]}"> <img class="ImagemDoTipo" src="styles/types/${types[1]}.svg"/>`)}</span>
+            
+                <div class="infos">
+                    <h3 class="NumDoPoke">#${pokemon.id}</h3>
+                    <h2 class="NomeDoPoke">${pokemon.name}</h2>
+                    <div class="Tipos">
+                        <span class="badge ${types[0]}">
+                            <img class="ImagemDoTipo" src="styles/types/${types[0]}.svg"/>
+                        ${types.join(` </span> <span class="badge ${types[1]}"> <img class="ImagemDoTipo" src="styles/types/${types[1]}.svg"/>`)}</span>
+                    </div>
+                </div>
+                
+                <div class="ImagemPoke">
+                    <img class="fundoPoke" src="styles/images/bg.png">
+                    <img class="imagem" alt="${pokemon.name}" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png"/>
                 </div>
             `;    
-    
+            //
+            //<img class="imagem" alt="${pokemonNomeFormatado}" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png"/>
+            //<img class="imagem" alt="${pokemonNomeFormatado}" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${pokemon.id}.svg"/>
             listElement.addEventListener('click', () => funcDetalhes(pokemon.id));
     
             LugarDosPoke.appendChild(listElement);
@@ -70,17 +75,17 @@ class Pokedex{
 
     //Criando a url para os pokemao
     async  funcGetPokemon(idOrName){
-        const urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+idOrName
         
+        const urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+idOrName
+
         this.DivLoading.classList.remove('invisivel')
 
-        const { data } = await axios.get(urlDoPokemao);
-
+        const { data } = await axios.get(urlDoPokemao)
+        
         this.DivLoading.classList.add('invisivel')
 
         return data;
     }
-
 }
 
 //Criando URL para a proxima evolucao
@@ -114,6 +119,7 @@ async function funcBuscarOsPoke(){
         UlDosPokes.innerHTML="";
 
         await pokedex.funcListarPoke([keyword]);
+        
     }
 }
 
@@ -251,7 +257,7 @@ async function funcDetalhes(Poke){
     document.write(`
         <li id="poke${id}" class="pokes${types[0]} Detalhes">
         <img class="fundoPoke" src="styles/images/bg.png"/>
-        <img class="imagem ${types[0]}" alt="${pokemonNomeFormatado}" src="https://raw.githubusercontent.com/jnovack/pokemon-svg/master/svg/${id}.svg"/>
+        <img class="imagem ${types[0]}" alt="${pokemonNomeFormatado}" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png"/>
             <h3 class="NumDoPoke">#${id}</h3>
             <h2 class="NomeDoPoke">${pokemonNomeFormatado}</h2>
             

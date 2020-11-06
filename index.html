@@ -10,36 +10,38 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <!-- <link
-      rel="stylesheet"
-      href="styles/reset.css"
-    /> -->
     <link
       rel="stylesheet"
-      href="styles/stylePokedex.css"
+      href="styles/reset.css"
+    />
+    <link
+      rel="stylesheet"
+      href="styles/stylePokedexV2.css"
     />
     <link rel="icon" type="image/png" href="styles/images/poke-icon.png" />
   </head>
 
   <body>
-    <div class="BarrinhaBonita">
-      <h3 class="TituloBarrinha">A melhor pokédex do Brasil!</h3>
+    <header class="BarrinhaBonita">
+     
       <img
         class="Loguinho"
         onclick="funcPaginainicial()"
         src="styles/images/1200px-International_Pokémon_logo.svg.png"
       />
-      <h5 class="Autor">by: Felipe Bis</h5>
-    </div>
 
-    <header class="BarrinhaDeBusca">
-      <label>Digite o número de um pokémon para buscá-lo.</label>
+    </header>
+
+      
+
+    <div class="BarrinhaDeBusca">
+      <p class="TextoBusca">Digite o número de um pokémon para buscá-lo.</p>
       <form id="formulario-busca">
         <input
           id="campo-busca"
           class="busca"
           type="search"
-          placeholder="Exemplo: 1"
+          placeholder="Exemplo: bulbasaur ou 1"
         />
         <button
           id="buscar"
@@ -49,20 +51,17 @@
         >
           <i class="fa fa-search"></i>
         </button>
-        <!--<input id="enviar" class="Submit" type="submit" value="Buscar"/>-->
       </form>
-    </header>
+    </div>
 
     <div class="Pokemaos">
       <ul id="TodoMundo" class="Todos"></ul>
-      <div id="load" class="carregando invisivel"></div>
-      <div class="error invisivel">
+     
+      <div id="load" class="carregando"></div>
+      
+      <div id="error" class="error invisivel">
         <p>0 results found.</p>
       </div>
-    </div>
-
-    <div class="LogoPokemao">
-      <img class="ImagemFim" src="styles/images/pokedex-logo.png" />
     </div>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

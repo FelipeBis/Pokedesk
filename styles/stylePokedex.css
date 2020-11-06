@@ -38,11 +38,11 @@ label {
   margin-top: 5px;
   width: 20px;
   height: 20px;
-}
+} /*FEITO*/
 .ImagemFim {
   width: 50px;
   height: 50px;
-}
+} /*FEITO*/
 .Loguinho {
   margin-top: 10px;
   margin-left: 195px;
@@ -59,7 +59,7 @@ body {
   border: 1px solid black;
   border-radius: 10px;
   margin-left: 85px;
-}
+} /*FEITO*/
 .BarrinhaDeBusca input {
   width: 200px;
   padding: 6px;
@@ -67,14 +67,14 @@ body {
   margin-top: 8px;
   margin-right: 20px;
   font-size: 17px;
-}
+} /*FEITO*/
 .Submit {
   padding: 6px;
   margin-left: -18px;
   margin-top: 8px;
   height: 35px;
   width: 33px;
-}
+} /*FEITO*/
 .Pokemaos {
   overflow-y: scroll;
   margin-left: 380px;
@@ -82,7 +82,7 @@ body {
   height: 730px;
   width: 1120px;
   background-color: #c6bcbc;
-}
+} /*FEITO*/
 .dragon {
   margin-bottom: 15px;
   position: relative;
@@ -90,7 +90,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesdragon {
   margin-left: 260px;
   background: repeating-linear-gradient(to top, rgb(75, 83, 148), #8f9af1 5px);
@@ -101,7 +101,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .ice {
   margin-bottom: 15px;
   position: relative;
@@ -109,7 +109,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesice {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -124,7 +124,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .ghost {
   margin-bottom: 15px;
   position: relative;
@@ -132,7 +132,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesghost {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -147,7 +147,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .rock {
   margin-bottom: 15px;
   position: relative;
@@ -155,7 +155,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesrock {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -170,7 +170,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .psychic {
   margin-bottom: 15px;
   position: relative;
@@ -178,7 +178,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokespsychic {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -193,7 +193,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .fighting {
   margin-bottom: 15px;
   position: relative;
@@ -201,7 +201,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesfighting {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -216,7 +216,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .fairy {
   margin-bottom: 15px;
   position: relative;
@@ -224,7 +224,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesfairy {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -239,7 +239,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .ground {
   margin-bottom: 15px;
   position: relative;
@@ -247,7 +247,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesground {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -262,7 +262,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .poison {
   margin-bottom: 15px;
   position: relative;
@@ -270,7 +270,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokespoison {
   margin-left: 260px;
   background: repeating-linear-gradient(to top, rgb(133, 84, 160), #c8a3dc 5px);
@@ -281,7 +281,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .normal {
   margin-bottom: 15px;
   position: relative;
@@ -289,7 +289,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesnormal {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -304,7 +304,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .bug {
   margin-bottom: 15px;
   position: relative;
@@ -312,7 +312,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesbug {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -327,7 +327,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .electric {
   margin-bottom: 15px;
   position: relative;
@@ -335,7 +335,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokeselectric {
   margin-left: 260px;
   background: repeating-linear-gradient(
@@ -350,7 +350,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .fire {
   margin-bottom: 15px;
   position: relative;
@@ -358,7 +358,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokesfire {
   margin-left: 260px;
   background: repeating-linear-gradient(to top, rgb(243, 18, 18), #e68b8b 5px);
@@ -369,7 +369,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .grass {
   margin-bottom: 15px;
   position: relative;
@@ -377,18 +377,18 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .imagem {
   transform: rotateY(0deg);
   transition: transform 1s;
   margin-left: 310px;
-  width: 192px;
+  width: 180px;
   height: 150px;
   right: 0;
-}
+} /*FEITO*/
 .imagem:hover {
   transform: scale(1.1) rotate(10deg);
-}
+} /*FEITO*/
 .pokesgrass {
   margin-left: 260px;
   border-radius: 10px;
@@ -402,11 +402,11 @@ body {
   height: 150px;
   box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
   transition: 1s;
-}
+} /*FEITO*/
 .pokesgrass:hover {
   transform: scale(1.02);
   cursor: pointer;
-}
+} /*FEITO*/
 .water {
   margin-bottom: 15px;
   position: relative;
@@ -414,7 +414,7 @@ body {
   margin-left: 150px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .pokeswater {
   margin-left: 260px;
   border-radius: 10px;
@@ -425,7 +425,7 @@ body {
   margin-top: 5px;
   width: 500px;
   height: 150px;
-}
+} /*FEITO*/
 .NomeDoPoke {
   text-shadow: 1px 1px 2px black;
   margin-top: -25px;
@@ -435,7 +435,7 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .NumDoPoke {
   margin-left: 30px;
   margin-top: -150px;
@@ -443,24 +443,24 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: #393933;
-}
+} /*FEITO*/
 ul {
   list-style-type: none;
   display: grid;
-}
+} /*FEITO*/
 .fundoPoke {
   margin-left: 330px;
   width: 150px;
   height: 150px;
   opacity: 0.8;
-}
+} /*FEITO*/
 .Tipos {
   margin-left: 30px;
   margin-top: -20px;
-}
+} /*FEITO*/
 .ImagemDoTipo {
   height: 15px;
-}
+} /*FEITO*/
 .Tiposgrass {
   margin-left: 10px;
   position: relative;
@@ -475,7 +475,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tipospoison {
   margin-left: 10px;
   position: relative;
@@ -490,7 +490,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposfire {
   margin-left: 10px;
   position: relative;
@@ -505,7 +505,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposflying {
   margin-left: 10px;
   position: relative;
@@ -520,7 +520,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposwater {
   margin-left: 10px;
   position: relative;
@@ -535,7 +535,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposbug {
   margin-left: 10px;
   position: relative;
@@ -550,7 +550,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposnormal {
   margin-left: 10px;
   position: relative;
@@ -565,7 +565,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposelectric {
   margin-left: 10px;
   position: relative;
@@ -580,7 +580,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposground {
   margin-left: 10px;
   position: relative;
@@ -595,7 +595,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposfairy {
   margin-left: 10px;
   position: relative;
@@ -610,7 +610,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposfighting {
   margin-left: 10px;
   position: relative;
@@ -625,7 +625,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tipospsychic {
   margin-left: 10px;
   position: relative;
@@ -640,7 +640,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposrock {
   margin-left: 10px;
   position: relative;
@@ -655,7 +655,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tipossteel {
   margin-left: 10px;
   position: relative;
@@ -670,7 +670,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposice {
   margin-left: 10px;
   position: relative;
@@ -685,7 +685,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposghost {
   margin-left: 10px;
   position: relative;
@@ -700,7 +700,7 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
 .Tiposdragon {
   margin-left: 10px;
   position: relative;
@@ -715,7 +715,8 @@ ul {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
   color: azure;
-}
+} /*FEITO*/
+
 .Detalhes {
   width: 500px;
   height: 250px;
@@ -821,17 +822,17 @@ span {
 }
 .invisivel {
   display: none;
-}
+} /*FEITP*/
 .error {
   text-align: center;
-}
+} /*FEITP*/
 .carregando {
   background: url(https://static.thenounproject.com/png/574915-200.png);
   margin: 5% auto;
   height: 200px;
   width: 200px;
   animation: spin 2s ease-in-out infinite;
-}
+} /*FEITP*/
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -839,4 +840,4 @@ span {
   100% {
     transform: rotate(360deg);
   }
-}
+} /*FEITP*/

@@ -1,66 +1,17 @@
 .BarrinhaBonita {
   display: flex;
+  align-items: center;
+  margin: auto;
   width: 100%;
   height: 120px;
   background-color: #272121;
 }
 
-@media only screen and (max-width: 900px) {
-  .BarrinhaBonita {
-    display: flex;
-    width: 347%;
-    height: 120px;
-    background-color: #272121;
-  }
-}
-
-.TituloBarrinha {
-  padding-top: 10px;
-  padding-left: 143px;
-  margin-bottom: -10px;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-style: normal;
-  font-size: 23pt;
-  width: 410px;
-}
-
 .Loguinho {
-  margin-top: 10px;
-  margin-left: 210px;
+  margin-right: auto;
+  margin-left: auto;
   height: 100px;
-  width: 350px;
-}
-
-@media only screen and (max-width: 900px) {
-  .Loguinho {
-    margin-top: 10px;
-    margin-left: 550px;
-    height: 100px;
-    width: 350px;
-  }
-}
-
-.Autor {
-  margin-top: 85px;
-  margin-left: 580px;
-  font-size: 12pt;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-style: normal;
-}
-
-@media only screen and (max-width: 900px) {
-  .Autor {
-    margin-left: 800px;
-    font-size: 12pt;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    font-style: normal;
-  }
+  width: 300px;
 }
 
 body {
@@ -68,21 +19,303 @@ body {
 }
 
 .BarrinhaDeBusca {
-  margin-left: 700px;
-  width: 500px;
+  display: block;
+  width: 430px;
+  margin-right: auto;
+  margin-left: auto;
+  height: 40px;
+  align-items: center;
 }
 
-@media only screen and (max-width: 900px) {
-  .BarrinhaDeBusca {
-    margin-left: 1060px;
-    width: 500px;
-  }
-}
-
-label {
+.TextoBusca {
+  margin-bottom: 10px;
   font-size: 15pt;
   color: white;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-style: normal;
+}
+
+#formulario-busca {
+  align-items: center;
+  margin-right: auto;
+  margin-left: auto;
+  width: 210px;
+  height: 50px;
+}
+
+.busca {
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 25px;
+}
+
+.Pokemaos {
+  overflow-y: scroll;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  height: 750px;
+  width: 80%;
+  background-color: #c6bcbc;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.carregando {
+  background: url(https://static.thenounproject.com/png/574915-200.png);
+  margin: 5% auto;
+  height: 200px;
+  width: 200px;
+  animation: spin 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.invisivel {
+  display: none;
+}
+
+.error {
+  text-align: center;
+}
+
+.card {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  height: 170px;
+  width: 500px;
+  border-radius: 10px;
+  border: 1px solid black;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
+  transition: 1s;
+  box-sizing: border-box;
+  justify-content: space-around;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.grass1 {
+  background-color: #89c091;
+}
+
+.dragon1 {
+  background-color: #8f9af1;
+}
+
+.ice1 {
+  background-color: #d1f3f3;
+}
+
+.ghost1 {
+  background-color: #beb9ec;
+}
+
+.rock1 {
+  background-color: #d1ccb6;
+}
+
+.psychic1 {
+  background-color: #d6517a;
+}
+
+.poison1 {
+  background-color: #a18bbd;
+}
+
+.fighting1 {
+  background-color: #da967d;
+}
+
+.fairy1 {
+  background-color: #fbdffd;
+}
+
+.ground1 {
+  background-color: #bbaf80;
+}
+
+.normal1 {
+  background-color: #bbbdac;
+}
+
+.bug1 {
+  background-color: #d8dbaf;
+}
+
+.electric1 {
+  background-color: rgb(223, 216, 157);
+}
+
+.fire1 {
+  background-color: #e68b8b;
+}
+
+.water1 {
+  background-color: #afc0db;
+}
+
+/*DIV PAE*/
+.ImagemPoke {
+  position: relative;
+}
+
+.imagem {
+  transform: rotateY(0deg);
+  transition: transform 1s;
+  width: 150px;
+  height: 150px;
+  z-index: 1;
+}
+
+.imagem:hover {
+  transform: scale(1.1) rotate(10deg);
+}
+
+.fundoPoke {
+  width: 150px;
+  height: 150px;
+  z-index: 0;
+  position: absolute;
+  opacity: 0.5;
+}
+
+.infos {
+  padding: 5%;
+  display: flex;
+  flex-direction: column;
+}
+
+.NumDoPoke {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: normal;
+  color: #393933;
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.NomeDoPoke {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: normal;
+  color: azure;
+  font-size: 30pt;
+  text-shadow: 1px 1px 2px black;
+  margin-left: -3%;
+  text-transform: capitalize;
+}
+
+.ImagemDoTipo {
+  height: 15px;
+  margin-right: 5px;
+}
+
+.Tipos {
+  display: flex;
+  margin-top: 5%;
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  padding: 0 10px;
+  border-radius: 1px;
+  border: 1px solid black;
+  height: 23px;
+  text-shadow: 1px 1px 2px black;
+  color: azure;
+  font-style: normal;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.grass {
+  background-color: rgb(45, 88, 45);
+}
+
+.poison {
+  background-color: rgb(87, 81, 121);
+}
+
+.fire {
+  background-color: rgb(119, 6, 6);
+}
+
+.water {
+  background-color: rgb(99, 99, 206);
+}
+
+.flying {
+  background-color: rgb(159, 165, 223);
+}
+
+.bug {
+  background-color: rgb(167, 162, 100);
+}
+
+.normal {
+  background-color: rgb(145, 144, 125);
+}
+
+.electric {
+  background-color: rgb(197, 180, 25);
+}
+
+.ground {
+  background-color: rgb(129, 123, 67);
+}
+
+.fairy {
+  background-color: rgb(230, 169, 214);
+}
+
+.fighting {
+  background-color: rgb(156, 115, 77);
+}
+
+.psychic {
+  background-color: rgb(155, 9, 135);
+}
+
+.rock {
+  background-color: rgb(182, 159, 95);
+}
+
+.steel {
+  background-color: rgb(158, 169, 179);
+}
+
+.ice {
+  background-color: rgb(154, 185, 214);
+}
+
+.ghost {
+  background-color: rgb(134, 97, 177);
+}
+
+.dragon {
+  background-color: rgb(65, 107, 170);
+}
+
+span {
+  text-transform: capitalize;
 }
