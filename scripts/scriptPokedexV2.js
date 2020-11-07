@@ -157,11 +157,10 @@ async function buscarInfoEvolucao(urlEvolucao, Poke) {
 }
 
 //GET URL da evolucao
-async function GetUrlEvolution(idOrName) {
-    const urlSobrePoke =
-        "https://pokeapi.co/api/v2/pokemon-species/" + idOrName;
+async function getUrlSobre(idOrName) {
+    const urlSobrePoke = "https://pokeapi.co/api/v2/pokemon/"  + idOrName;
     const { data } = await axios.get(urlSobrePoke);
-    return data.evolution_chain.url;
+    return data.species.url
 }
 
 //Descrição ajustavel
@@ -171,17 +170,13 @@ function ajustarDesc(desc) {
 }
 
 //Buscar informacoes sobre evolucao
-async function buscarInfoSobre(idOrName) {
-    const urlSobrePoke =
-        "https://pokeapi.co/api/v2/pokemon-species/" + idOrName;
+async function buscarInfoSobre(urlSobrePoke) {
     const { data } = await axios.get(urlSobrePoke);
     return data.flavor_text_entries[6].flavor_text;
 }
 
 //Buscar Genero Pokemon
-async function buscarInfoGenero(idOrName) {
-    const urlSobrePoke =
-        "https://pokeapi.co/api/v2/pokemon-species/" + idOrName;
+async function buscarInfoGenero(urlSobrePoke) {
     const { data } = await axios.get(urlSobrePoke);
     return data.genera[7].genus;
 }
@@ -207,6 +202,7 @@ async function funcDetalhes(Poke){
     document.write('<html lang="en">')
 
     document.write('<head>')
+    document.write('<title>Pokédex - Detalhes by: Felipe Bis</title>')
     document.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">')
     document.write('<link rel="stylesheet" href="styles/reset.css"/>')
     document.write('<link rel="stylesheet" href="styles/stylePokedexV2.css">')
@@ -227,9 +223,11 @@ async function funcDetalhes(Poke){
 
     document.write('<ul id="TodoMundo" class="Todos">')
     var urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+Poke
+
+    const UrlParaInfos = await getUrlSobre(Poke)
     
-    const informacoesGerais = await buscarInfoSobre(Poke)
-    const informacoesGenero = await buscarInfoGenero(Poke)
+    const informacoesGerais = await buscarInfoSobre(UrlParaInfos)
+    const informacoesGenero = await buscarInfoGenero(UrlParaInfos)
     const informacoesStatus = await buscarStatus(Poke)
 
     const {data: pokemon} = await axios.get(urlDoPokemao);
@@ -286,12 +284,12 @@ async function funcDetalhes(Poke){
             <p><span style="font-weight: bold;">Weaknesss </span>${Fraquezas.join(`, `)}</p>
         </div>
         <div id="TudosobreStatus">
-            <span style="font-weight: bold;">HP: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[0].base_stat}px;background-color:green">${informacoesStatus[0].base_stat}</div>
-            <span style="font-weight: bold;">ATTACK: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[1].base_stat}px;background-color:green">${informacoesStatus[1].base_stat}</div>
-            <span style="font-weight: bold;">DEFENSE: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[2].base_stat}px;background-color:green">${informacoesStatus[2].base_stat}</div>
-            <span style="font-weight: bold;">SPECIAL-ATTACK: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[3].base_stat}px;background-color:green">${informacoesStatus[3].base_stat}</div>
-            <span style="font-weight: bold;">SPECIAL-DEFENSE: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[4].base_stat}px;background-color:green">${informacoesStatus[4].base_stat}</div>
-            <span style="font-weight: bold;">SPEED: </span><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[5].base_stat}px;background-color:green">${informacoesStatus[5].base_stat}</div>
+            <p><span style="font-weight: bold;">HP: </span></p><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[0].base_stat}px;background-color:green">${informacoesStatus[0].base_stat}</div>
+            <p><span style="font-weight: bold;">ATTACK: </span></p><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[1].base_stat}px;background-color:green">${informacoesStatus[1].base_stat}</div>
+            <p><span style="font-weight: bold;">DEFENSE: </span></p><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[2].base_stat}px;background-color:green">${informacoesStatus[2].base_stat}</div>
+            <p><span style="font-weight: bold;">SPECIAL-ATTACK: </span></p><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[3].base_stat}px;background-color:green">${informacoesStatus[3].base_stat}</div>
+            <p><span style="font-weight: bold;">SPECIAL-DEFENSE: </span></p><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[4].base_stat}px;background-color:green">${informacoesStatus[4].base_stat}</div>
+            <p><span style="font-weight: bold;">SPEED: </span></p><div style="margin-left:10px;padding-left:10px;width: ${informacoesStatus[5].base_stat}px;background-color:green">${informacoesStatus[5].base_stat}</div>
         </div>
         `);
                   

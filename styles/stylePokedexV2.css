@@ -344,6 +344,11 @@ span {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+#sobre:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
 #sobre {
   color: rgb(12, 19, 12);
   border: 2px solid black;
@@ -356,6 +361,12 @@ span {
   border: 2px solid black;
   border-radius: 6px;
   background-color: #bdbdba;
+  width: 50px;
+}
+
+#status:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 #Tudosobre {
@@ -417,6 +428,10 @@ span {
   text-shadow: 1px 1px 2px black;
 }
 
+#TudosobreStatus div {
+  margin-bottom: 5px;
+}
+
 #TudosobreStatus span {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -462,39 +477,78 @@ span {
 @media (max-width: 680px) {
   .card {
     width: 450px;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    height: 170px;
-    border-radius: 10px;
-    border: 1px solid black;
-    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
-    transition: 1s;
-    box-sizing: border-box;
-    justify-content: space-around;
+  }
+
+  #Tudosobre {
+    width: 450px;
+  }
+
+  #TudosobreStatus {
+    width: 450px;
+  }
+
+  #sobre {
+    margin-bottom: 10px;
+  }
+
+  #status {
+    width: 50px;
   }
 }
 
 @media (max-width: 610px) {
   .card {
-    width: 400px;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    margin-right: auto;
-    margin-left: auto;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    height: 170px;
-    border-radius: 10px;
-    border: 1px solid black;
-    box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.75);
-    transition: 1s;
-    box-sizing: border-box;
-    justify-content: space-around;
+    width: 410px;
+  }
+
+  #Tudosobre {
+    width: 410px;
+  }
+
+  #TudosobreStatus {
+    width: 410px;
+  }
+
+  #botoesDetalhes {
+    width: 20px;
+    margin-top: 45%;
+    margin-right: 17%;
+  }
+
+  .Detalhes {
+    padding: 25%;
+  }
+}
+
+@media (max-width: 530px) {
+  .card {
+    width: 350px;
+  }
+
+  .imagem {
+    height: 120px;
+    width: 120px;
+  }
+
+  .fundoPoke {
+    height: 120px;
+    width: 120px;
+  }
+
+  .infos {
+    padding: 0%;
+    margin-left: 10px;
+  }
+
+  #Tudosobre {
+    width: 350px;
+  }
+
+  #TudosobreStatus {
+    width: 350px;
+  }
+
+  .Detalhes {
+    padding: 10%;
   }
 }
