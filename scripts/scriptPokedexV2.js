@@ -94,23 +94,28 @@ function funcPaginainicial() {
     window.location = "/";
 }
 
-//Se eu quiser ajustar as letras
-function ajustarNome(NomeDoPokemao) {
-    return NomeDoPokemao.charAt(0).toUpperCase() + NomeDoPokemao.slice(1);
-}
 
 //Funcao que faz a busca dos pokemons
 async function funcBuscarOsPoke() {
     const campoBusca = document.getElementById("campo-busca");
     const pokedex = new Pokedex();
     const keyword = campoBusca.value.trim();
+    const DivError = document.querySelector("#error");
+    const DivLoading = document.querySelector("#load");
 
     if (keyword !== "") {
         const UlDosPokes = document.querySelector("ul#TodoMundo");
 
         UlDosPokes.innerHTML = "";
 
-        await pokedex.funcListarPoke([keyword]);
+        try{
+            await pokedex.funcListarPoke([keyword]);
+            DivError.classList.add("invisivel")
+        }
+        catch{
+           DivLoading.classList.add("invisivel")
+           DivError.classList.remove("invisivel")
+        }
     }
 }
 
