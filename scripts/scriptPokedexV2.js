@@ -2,14 +2,19 @@ class Pokedex {
     constructor() {
         this.TodosPoke = [];
         this.offset = 0;
-        this.limit = 10;
+        this.limit = 12;
         this.baseURL = "https://pokeapi.co/api/v2/pokemon/";
         this.DivLoading = document.querySelector("#load");
         this.DivError = document.querySelector("#error");
+        this.isLoading = false
     }
 
     //Carregar os pokemons
     async loadPokemons() {
+        if(this.isLoading) return;
+
+        this.isLoading = true
+
         const urlPokemons = `${this.baseURL}?limit=${this.limit}&offset=${this.offset}`;
 
         const { data } = await axios.get(urlPokemons);
@@ -19,6 +24,8 @@ class Pokedex {
         const NomeDoPokemaos = data.results.map(({ name }) => name);
 
         await this.funcListarPoke(NomeDoPokemaos);
+
+        this.isLoading = false
 
         this.offset = this.offset + this.limit;
     }
@@ -234,7 +241,7 @@ async function funcDetalhes(Poke){
 
     document.write('<div class="Pokemaos">')
 
-    document.write('<ul id="TodoMundo" class="Todos">')
+    document.write('<ul id="TodoMundo" class="Todos DetailsNe">')
     var urlDoPokemao = 'https://pokeapi.co/api/v2/pokemon/'+Poke
 
     const UrlParaInfos = await getUrlSobre(Poke)
