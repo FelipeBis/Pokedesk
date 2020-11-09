@@ -48,7 +48,7 @@
 }
 
 body {
-  background: linear-gradient(to top, #e61515 10%, #282828);
+  background: linear-gradient(to top, #e61515 5%, #282828);
   display: flex;
   height: 100vh;
   flex-direction: column;
