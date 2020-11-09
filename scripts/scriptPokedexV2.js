@@ -2,7 +2,7 @@ class Pokedex {
     constructor() {
         this.TodosPoke = [];
         this.offset = 0;
-        this.limit = 12;
+        this.limit = 24;
         this.baseURL = "https://pokeapi.co/api/v2/pokemon/";
         this.DivLoading = document.querySelector("#load");
         this.DivError = document.querySelector("#error");
