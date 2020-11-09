@@ -109,7 +109,7 @@ async function funcGetPokemonEvolution(idOrName) {
 
 //Pagina Inicial
 function funcPaginainicial() {
-    window.location = "/";
+    window.location = "index.html";
 }
 
 
