@@ -528,9 +528,12 @@ span {
 }
 
 .back {
+  border-radius: 5px;
+  appearance: none;
   border: 0;
   padding: 0;
-  color: black;
+  background: #2d71b5;
+  color: #fff;
   padding: 5px;
 }
 

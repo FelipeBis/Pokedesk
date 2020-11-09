@@ -120,6 +120,9 @@ async function funcBuscarOsPoke() {
     const keyword = campoBusca.value.toLowerCase().trim();
     const DivError = document.querySelector("#error");
     const DivLoading = document.querySelector("#load");
+    const BotaoBack = document.querySelector("#voltar")
+
+    BotaoBack.classList.remove("invisivel")
 
 
     if(keyword==""){
