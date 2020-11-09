@@ -25,6 +25,7 @@ class Pokedex {
 
     //Para a listagem dos pokes
     async funcListarPoke(pokemonNames) {
+
         const LugarDosPoke = document.querySelector('[id="TodoMundo"]');
 
         for (let i = 0; i < pokemonNames.length; i++) {
@@ -33,9 +34,10 @@ class Pokedex {
                 const listElement = document.createElement("li");
                 listElement.classList.add(`card`);
                 listElement.classList.add(`${types[0]}1`);
-                listElement.setAttribute("id", `poke${pokemon.id}`);
+                listElement.setAttribute("id", `poke`);
 
                 listElement.innerHTML = `
+
             
                 <div class="infos">
                     <h3 class="NumDoPoke">#${pokemon.id}</h3>
@@ -52,12 +54,10 @@ class Pokedex {
                 </div>
                 
                 <div class="ImagemPoke">
-                    <img class="fundoPoke" src="styles/images/bg.png">
+                    <img class="fundoPoke" src="styles/images/bg.png"/>
                     <img class="imagem" alt="${
                         pokemon.name
-                    }" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-                    pokemon.id
-                }.png"/>
+                    }" src = "${this.ajustarURL(pokemon.id)}"/>
                 </div>
             `;
 
@@ -80,6 +80,17 @@ class Pokedex {
 
         return data;
     }
+
+    ajustarURL(idPokes){
+
+        if((idPokes >= 10027 && idPokes <= 10032) || idPokes == 10061 || (idPokes >= 10080 && idPokes <= 10085) || (idPokes >= 10091 && idPokes <= 10157) ){
+            return `https://i.imgur.com/W3LOC3Z.png`
+        }
+        else{
+            return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+                    idPokes}.png`
+        }
+    }
 }
 
 //Criando URL para a proxima evolucao
@@ -99,9 +110,17 @@ function funcPaginainicial() {
 async function funcBuscarOsPoke() {
     const campoBusca = document.getElementById("campo-busca");
     const pokedex = new Pokedex();
-    const keyword = campoBusca.value.trim();
+    const keyword = campoBusca.value.toLowerCase().trim();
     const DivError = document.querySelector("#error");
     const DivLoading = document.querySelector("#load");
+
+
+    if(keyword==""){
+        const UlDosPokes = document.querySelector("ul#TodoMundo");
+
+        UlDosPokes.innerHTML = "";
+        pokedex.loadPokemons()
+    }
 
     if (keyword !== "") {
         const UlDosPokes = document.querySelector("ul#TodoMundo");
@@ -110,6 +129,7 @@ async function funcBuscarOsPoke() {
 
         try{
             await pokedex.funcListarPoke([keyword]);
+            DivError.classList.add("invisivel")
             DivError.classList.add("invisivel")
         }
         catch{
@@ -144,18 +164,6 @@ function funcMostrarSobre() {
     }
 }
 
-//Buscar informacoes gerais
-async function buscarInfoEvolucao(urlEvolucao, Poke) {
-    var Evolution = [];
-    //const urlEvolucao = 'https://pokeapi.co/api/v2/evolution-chain/'+idOrName
-    //console.log(urlEvolucao)
-    const { data } = await axios.get(urlEvolucao);
-    if (data.chain.evolves_to != "")
-        Evolution.push(data.chain.evolves_to[0].species.name);
-    else Evolution.push(data.chain.species.name);
-    return Evolution;
-}
-
 //GET URL da evolucao
 async function getUrlSobre(idOrName) {
     const urlSobrePoke = "https://pokeapi.co/api/v2/pokemon/"  + idOrName;
@@ -178,6 +186,11 @@ async function buscarInfoSobre(urlSobrePoke) {
 //Buscar Genero Pokemon
 async function buscarInfoGenero(urlSobrePoke) {
     const { data } = await axios.get(urlSobrePoke);
+
+    if(!data.genera[7]){
+        return "Not Defined"
+    }
+    else
     return data.genera[7].genus;
 }
 
@@ -302,6 +315,7 @@ async function funcDetalhes(Poke){
 //Adicionando evento de busca no formulario (input)
 const formBusca = document.getElementById("formulario-busca");
 formBusca.addEventListener("submit", (event) => {
+
     event.preventDefault();
 
     funcBuscarOsPoke();
@@ -312,11 +326,29 @@ window.onload = function () {
     const pokedex = new Pokedex();
 
     pokedex.loadPokemons();
+        
     document
         .querySelector("div.Pokemaos")
         .addEventListener("scroll", function () {
-            if (this.scrollTop + this.offsetHeight == this.scrollHeight) {
+
+            const campoBusca = document.getElementById("campo-busca")
+            
+            if ((this.scrollTop + this.offsetHeight) == (this.scrollHeight) && !campoBusca.value) {
+                //alert("OI")
                 pokedex.loadPokemons();
             }
+            // else if(this.scrollTop == 0){
+            //     let forms = document.querySelector("form#formulario-busca")
+            //     let TextoBusca = document.querySelector("p.TextoBusca")
+            //     forms.classList.remove('invisivel')
+            //     TextoBusca.classList.remove('invisivel')
+            // }
+            // else{
+            //     let forms = document.querySelector("form#formulario-busca")
+            //     let TextoBusca = document.querySelector("p.TextoBusca")
+            //     forms.classList.add('invisivel')
+            //     TextoBusca.classList.add('invisivel')
+            // }
+
         });
 };
