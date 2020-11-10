@@ -120,10 +120,6 @@ async function funcBuscarOsPoke() {
     const keyword = campoBusca.value.toLowerCase().trim();
     const DivError = document.querySelector("#error");
     const DivLoading = document.querySelector("#load");
-    const BotaoBack = document.querySelector("#voltar")
-
-    BotaoBack.classList.remove("invisivel")
-
 
     if(keyword==""){
         const UlDosPokes = document.querySelector("ul#TodoMundo");
@@ -133,6 +129,10 @@ async function funcBuscarOsPoke() {
     }
 
     if (keyword !== "") {
+        const BotaoBack = document.querySelector("#voltar")
+
+        BotaoBack.classList.remove("invisivel")
+
         const UlDosPokes = document.querySelector("ul#TodoMundo");
 
         UlDosPokes.innerHTML = "";
