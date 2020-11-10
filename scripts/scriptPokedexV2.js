@@ -138,9 +138,8 @@ async function funcBuscarOsPoke() {
         UlDosPokes.innerHTML = "";
 
         try{
+            DivError.classList.add("invisivel")
             await pokedex.funcListarPoke([keyword]);
-            DivError.classList.add("invisivel")
-            DivError.classList.add("invisivel")
         }
         catch{
            DivLoading.classList.add("invisivel")
