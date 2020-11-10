@@ -123,6 +123,8 @@ async function funcBuscarOsPoke() {
 
     if(keyword==""){
         const UlDosPokes = document.querySelector("ul#TodoMundo");
+        const BotaoBack = document.querySelector("#voltar")
+        BotaoBack.classList.add("invisivel")
 
         UlDosPokes.innerHTML = "";
         pokedex.loadPokemons()
