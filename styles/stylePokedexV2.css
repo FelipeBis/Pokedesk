@@ -240,6 +240,10 @@ ul {
   background-color: #92969c;
 }
 
+.flying1 {
+  background-color: rgb(119, 128, 207);
+}
+
 .ImagemPoke {
   position: relative;
 }
