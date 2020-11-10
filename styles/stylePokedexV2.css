@@ -1,6 +1,11 @@
 * {
   box-sizing: border-box;
 }
+
+button {
+  cursor: pointer;
+}
+
 .BarrinhaBonita {
   display: flex;
   align-items: center;
@@ -45,6 +50,7 @@
   max-width: 300px;
   width: 100%;
   animation: tada 1s ease forwards;
+  cursor: pointer;
 }
 
 body {
@@ -405,6 +411,8 @@ ul {
   max-width: 1024px;
   margin-left: auto;
   margin-right: auto;
+  cursor: default;
+  transform: none !important;
 }
 
 span {
@@ -458,7 +466,7 @@ span {
   margin-right: auto;
   margin-left: auto;
   border-radius: 10px;
-  background-color: #c0c0c0;
+  background-color: rgb(255, 255, 255);
   border: 1px solid black;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -471,16 +479,11 @@ span {
   box-sizing: border-box;
 }
 
-#Tudosobre:hover {
-  transform: scale(1.02);
-  cursor: pointer;
-}
-
 #TudosobreStatus {
   margin-right: auto;
   margin-left: auto;
   border-radius: 10px;
-  background-color: #c0c0c0;
+  background-color: rgb(255, 255, 255);
   border: 1px solid black;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -493,11 +496,6 @@ span {
   transition: 1s;
   box-sizing: border-box;
   padding: 2%;
-}
-
-#TudosobreStatus:hover {
-  transform: scale(1.02);
-  cursor: pointer;
 }
 
 #Tudosobre p {
@@ -636,6 +634,18 @@ span {
   }
   .Detalhes .ImagemPoke {
     padding: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .infos {
+    padding: 0%;
+    margin-top: -15px;
+    margin-left: 5px;
+  }
+
+  #botoesDetalhes {
+    margin-top: 5px;
   }
 }
 
