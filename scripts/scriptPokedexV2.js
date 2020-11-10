@@ -342,7 +342,7 @@ window.onload = function () {
 
             const campoBusca = document.getElementById("campo-busca")
             
-            if ((this.scrollTop + this.offsetHeight) == (this.scrollHeight) && !campoBusca.value) {
+            if ((((this.scrollTop + this.offsetHeight))+1) >= (this.scrollHeight) && !campoBusca.value) {
                 //alert("OI")
                 pokedex.loadPokemons();
             }
