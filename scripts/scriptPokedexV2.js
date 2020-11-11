@@ -100,6 +100,18 @@ class Pokedex {
     }
 }
 
+//Ajustar URL fora da pokedex
+function ajustarURL(idPokes){
+
+    if((idPokes >= 10027 && idPokes <= 10032) || idPokes == 10061 || (idPokes >= 10080 && idPokes <= 10085) || (idPokes >= 10091 && idPokes <= 10157) ){
+        return `https://i.imgur.com/W3LOC3Z.png`
+    }
+    else{
+        return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+                idPokes}.png`
+    }
+}
+
 //Criando URL para a proxima evolucao
 async function funcGetPokemonEvolution(idOrName) {
     const urlDoPokemao = "https://pokeapi.co/api/v2/pokemon/" + idOrName;
@@ -276,7 +288,7 @@ async function funcDetalhes(Poke){
 
         <div class="ImagemPoke">
                     <img class="fundoPoke" src="styles/images/bg.png">
-                    <img class="imagem" alt="${pokemon.name}" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png"/>
+                    <img class="imagem" alt="${pokemon.name}" src="${ajustarURL(pokemon.id)}"/>
                 </div>
 
         <div class="infos">
